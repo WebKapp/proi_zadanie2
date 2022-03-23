@@ -3,7 +3,6 @@
 //
 #include<string>
 #include<vector>
-#include "date.h"
 
 using namespace std;
 
@@ -16,13 +15,22 @@ private:
     string name;
     string author;
     vector<string> songs;
-    Date dateCreated;
-    Date dateModified;
     float totalTime;
 public:
-    void setName(string newName);
-    void setAuthor(string newAuthor);
-    void setTotalTime(string newTotalTime);
+    Playlist();
+    string getName();
+    string getAuthor();
+    float getTotalTime();
+    void setName();
+    void setAuthor();
 
+    //vector songs- methods
+    bool checkIfContains(string song);
+    int getIndexOfSong(string Song);
+    void addSong(string newSong);
+    void modifySong(string oldSong, string newSong);
+    void removeSong(string Song);
+    int numberOfSongs();
+};
 
 #endif //PLAYLIST_H
