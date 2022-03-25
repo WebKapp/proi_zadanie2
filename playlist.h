@@ -15,14 +15,16 @@ private:
     string name;
     string author;
     vector<string> songs;
-    float totalTime;
+    float totalTime{};
+    string dateCreated;
+    string dateModified;
 public:
-    Playlist();
+    Playlist(string n, string a);
     string getName();
     string getAuthor();
-    float getTotalTime();
-    void setName();
-    void setAuthor();
+    double getTotalTime();
+    void setName(string newName);
+    void setAuthor(string newAuthor);
 
     //vector songs- methods
     bool checkIfContains(string song);

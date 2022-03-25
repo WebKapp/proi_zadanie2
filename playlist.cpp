@@ -5,28 +5,29 @@
 #include "playlist.h"
 using namespace std;
 
-Playlist::Playlist() {
-
+Playlist::Playlist(string n, string a) {
+    name = n;
+    author = a;
 }
 
 string Playlist::getAuthor() {
-    return std::string();
+    return author;
 }
 
 string Playlist::getName() {
-    return std::string();
+    return name;
 }
 
-float Playlist::getTotalTime() {
+double Playlist::getTotalTime() {
     return 0;
 }
 
-void Playlist::setName() {
-
+void Playlist::setName(string newName) {
+    name = newName;
 }
 
-void Playlist::setAuthor() {
-
+void Playlist::setAuthor(string newAuthor) {
+    author = newAuthor;
 }
 
 bool Playlist::checkIfContains(string keySong) {
@@ -49,9 +50,7 @@ int Playlist::getIndexOfSong(string Song){
     for (int i = 0; i < songs.size(); i++)
     {
         if (songs[i] == Song)
-        {
             return i;
-        }
     }
 }
 
@@ -64,9 +63,9 @@ void Playlist::modifySong(string oldSong, string newSong) {
 
 void Playlist::removeSong(string song) {
     if (checkIfContains(song))
-        remove(songs.begin(),songs.end(),song)
+        remove(songs.begin(),songs.end(),song);
 }
 
 int Playlist::numberOfSongs() {
-    return songs.size()
+    return songs.size();
 }
