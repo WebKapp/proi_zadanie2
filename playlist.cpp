@@ -5,9 +5,16 @@
 #include "playlist.h"
 using namespace std;
 
-Playlist::Playlist(string n, string a) {
-    name = n;
-    author = a;
+Playlist::Playlist(string Name, string Author, string DateCreated, string DateModified, vector<string> Songs, int TotalTime)
+{
+    name = Name;
+    author = Author;
+    dateCreated = DateCreated;
+    dateModified = DateModified;
+    if (checkTime(TotalTime))
+        totalTime = TotalTime;
+    songs = Songs;
+    totalTime = TotalTime;
 }
 
 string Playlist::getAuthor() {
@@ -18,8 +25,8 @@ string Playlist::getName() {
     return name;
 }
 
-double Playlist::getTotalTime() {
-    return 0;
+int Playlist::getTotalTime() {
+    return totalTime;
 }
 
 void Playlist::setName(string newName) {
@@ -68,4 +75,35 @@ void Playlist::removeSong(string song) {
 
 int Playlist::numberOfSongs() {
     return songs.size();
+}
+
+string Playlist::getDateCreated() {
+    return dateCreated;
+}
+
+string Playlist::getDateModified() {
+    return dateModified;
+}
+
+void Playlist::setTotalTime(int newTime) {
+    totalTime = newTime;
+}
+
+void Playlist::setDateCreated(string newDate) {
+    dateCreated = newDate;
+}
+
+void Playlist::setDateModified(string newDate) {
+    dateModified = newDate;
+}
+
+bool Playlist::checkTime(int checkedTime) {
+    if (checkedTime > 0)
+        return true;
+    else
+        return false;
+}
+
+vector<string> Playlist::getSongs() {
+    return songs;
 }
