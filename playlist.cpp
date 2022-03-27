@@ -64,13 +64,14 @@ int Playlist::getIndexOfSong(string Song){
 void Playlist::modifySong(string oldSong, string newSong) {
     if (checkIfContains(oldSong)){
         int index = getIndexOfSong(oldSong);
-        songs[index] = newSong;
+        songs.at(index) = newSong;
     }
 }
 
 void Playlist::removeSong(string song) {
-    if (checkIfContains(song))
-        remove(songs.begin(),songs.end(),song);
+    if (checkIfContains(song)){
+        songs.erase(std::remove(songs.begin(), songs.end(), song), songs.end());
+    }
 }
 
 int Playlist::numberOfSongs() {

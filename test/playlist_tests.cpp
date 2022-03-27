@@ -36,6 +36,36 @@ TEST_CASE("playlist simple tests", "[playlist]")
         CHECK(playlist1.getDateModified() == "20.04.2022");
     }
 
+    SECTION("modification of totalTime"){
+        playlist1.setTotalTime(15);
+        CHECK(playlist1.getTotalTime() == 15);
+    }
+
+    SECTION("adding new song to playlist"){
+        playlist1.addSong("Diamonds");
+        vector<string> songss = {"Innuendo", "Born this way", "Diamonds"};
+        CHECK(playlist1.getSongs() == songss);
+    }
+
+    SECTION("removing song from playlist"){
+        playlist1.removeSong("Born this way");
+        vector<string> songss = {"Innuendo"};
+        CHECK(playlist1.getSongs() == songss);
+    }
+
+    SECTION("Modifying song in plylist"){
+        playlist1.addSong("Diamonds");
+        playlist1.addSong("I'm still standing");
+        playlist1.addSong("Vogue");
+
+        vector<string> songss = {"Innuendo", "Born this way", "Diamonds", "I'm still standing", "Vogue"};
+        CHECK(playlist1.getSongs() == songss);
+
+        playlist1.modifySong("Born this way", "Radio Gaga");
+        vector<string> songs1 = {"Innuendo", "Radio Gaga", "Diamonds", "I'm still standing", "Vogue"};
+        CHECK(playlist1.getSongs() == songs1);
+    }
+
 
 
 }
