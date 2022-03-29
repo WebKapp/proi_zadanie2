@@ -6,27 +6,51 @@
 #include <vector>
 #include "playlist.h"
 #include <sstream>
+#include <cstring>
 using namespace std;
 
-//int main(int argc, char* argv[]) {
-//    if (argc != 7){
-//        cerr << "Incorrect number of command line arguments- expected 7, got" << argc << endl;
-//        return 1;
-//    }
+int main(int argc, char* argv[]) {
+    if (argc < 7) {
+        cerr << "Incorrect number of command line arguments- expected 7, got" << argc << endl;
+        return 1;
+    }
+    string Name;
+    string Author;
+    int TotalTime;
+    string DateCreated;
+    string DateModified;
 
+    stringstream stream;
 
+    stream << argv[1];
+    stream >> Name;
+    stream.clear();
 
+    stream << argv[2];
+    stream >> Author;
+    stream.clear();
 
-//    vector<int> v;
-//    v.push_back(15);
-//    v.push_back(122);
-//    int n = v.size();
-//    cout << "\nThe last element is: " << v[0];
-//    cout << "\nThe last element is: " << v[n - 1];
-//    v[0] = 2222;
-//    cout << "\nThe last element is: " << v[0];
-//}
+    stream << argv[3];
+    stream >> DateCreated;
+    stream.clear();
 
-int main(){
-    Playlist playlist1("kacperP", "kacper", "10.02.2002", "10.10.2002", {"kacper", "kamil"}, 10.3 );
+    stream << argv[4];
+    stream >> DateModified;
+    stream.clear();
+
+    stream << argv[5];
+    stream >> TotalTime;
+    stream.clear();
+
+    vector<string> Songs;
+    for(int i=6; i<argc; i++){
+        Songs.push_back((string)argv[i]);
+    }
+    Playlist playlist1(Name, Author, DateCreated, DateModified, Songs, TotalTime);
+    cout << playlist1.getName()<< endl;
+    cout << playlist1.getAuthor()<< endl;
+    cout << playlist1.getDateCreated()<< endl;
+    cout << playlist1.getDateModified()<< endl;
+    cout << playlist1.getTotalTime()<< endl;
+    playlist1.printSongs();
 }

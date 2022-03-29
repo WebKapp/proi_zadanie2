@@ -108,3 +108,9 @@ bool Playlist::checkTime(int checkedTime) {
 vector<string> Playlist::getSongs() {
     return songs;
 }
+
+void Playlist::printSongs() {
+    for (int i=0; i< songs.size(); i++){
+        cout << songs[i] << " ";
+    }
+}

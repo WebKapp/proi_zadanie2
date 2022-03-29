@@ -42,6 +42,7 @@ public:
     void modifySong(string oldSong, string newSong);
     void removeSong(string Song);
     int numberOfSongs();
+    void printSongs();
 };
 
 #endif //PLAYLIST_H
