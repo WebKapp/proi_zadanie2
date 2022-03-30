@@ -16,6 +16,11 @@ TEST_CASE("playlist simple tests", "[playlist]")
     CHECK(playlist1.getSongs() == songss);
     CHECK(playlist1.getTotalTime() == 14);
 
+    SECTION("checking if time is greater than 0"){
+        CHECK(playlist1.checkTime(-14) == 0);
+        CHECK(playlist1.checkTime(45) == 1);
+    }
+
     SECTION("Constructor with negative time") {
         Playlist playlist2("playlista1", "Kacper Murygin", "10.02.2020", "20.02.2021", {"Innuendo", "Born this way"}, -17);
         CHECK(playlist2.getTotalTime() == 0);
@@ -108,5 +113,13 @@ TEST_CASE("playlist simple tests", "[playlist]")
         playlist1.modifySong("Vogue", "Radio Gaga");
         vector<string> songs1 = {"Innuendo", "Born this way"};
         CHECK(playlist1.getSongs() == songs1);
+    }
+
+    SECTION("getting number of songs in a playlist"){
+        playlist1.addSong("Diamonds");
+        playlist1.addSong("I'm still standing");
+        playlist1.addSong("Vogue");
+
+        CHECK(playlist1.numberOfSongs() == 5);
     }
 }

@@ -54,4 +54,6 @@ int main(int argc, char* argv[]) {
     cout << playlist1.getTotalTime()<< endl;
     cout << "The playlist consists of " << argc - 6 << " songs:" << endl;
     playlist1.printSongs();
+    playlist1.addSong("Innuendo");
+    playlist1.printSongs();
 }
