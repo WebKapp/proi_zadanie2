@@ -13,8 +13,8 @@ Playlist::Playlist(string Name, string Author, string DateCreated, string DateMo
     dateModified = DateModified;
     if (checkTime(TotalTime))
         totalTime = TotalTime;
+    else totalTime = 0;
     songs = Songs;
-    totalTime = TotalTime;
 }
 
 string Playlist::getAuthor() {
@@ -46,11 +46,9 @@ bool Playlist::checkIfContains(string keySong) {
 }
 
 void Playlist::addSong(string newSong) {
-    if (not checkIfContains(newSong)){
+    if (not checkIfContains(newSong)) {
         songs.push_back(newSong);
     }
-    else
-        cout << "Song already in collection";
 }
 
 int Playlist::getIndexOfSong(string Song){
@@ -87,7 +85,8 @@ string Playlist::getDateModified() {
 }
 
 void Playlist::setTotalTime(int newTime) {
-    totalTime = newTime;
+    if (checkTime(newTime))
+        totalTime = newTime;
 }
 
 void Playlist::setDateCreated(string newDate) {

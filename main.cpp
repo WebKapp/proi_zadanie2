@@ -52,5 +52,6 @@ int main(int argc, char* argv[]) {
     cout << playlist1.getDateCreated()<< endl;
     cout << playlist1.getDateModified()<< endl;
     cout << playlist1.getTotalTime()<< endl;
+    cout << "The playlist consists of " << argc - 6 << " songs:" << endl;
     playlist1.printSongs();
 }
